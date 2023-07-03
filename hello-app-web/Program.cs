@@ -6,6 +6,17 @@ namespace hello_app_web
         {
             var builder = WebApplication.CreateBuilder(args);
 
+
+            // Load JSON file based on the environment value
+            string environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            string jsonFileName = $"appsettings.{environment}.json";
+
+            builder.Configuration
+                .SetBasePath(builder.Environment.ContentRootPath)
+                .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                .AddJsonFile(jsonFileName, optional: true, reloadOnChange: true)
+                .Build();
+
             // Add services to the container.
             builder.Services.AddRazorPages();
 

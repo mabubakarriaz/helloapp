@@ -3,8 +3,15 @@
 @{
     ViewData["Title"] = "Home page";
 }
+@inject IConfiguration Configuration
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div class="card border-@Configuration["bg-color"] mb-10" style="max-width: 18rem;">
+        <div class="card-header"> <h1 class="display-4">Welcome to <b>@Configuration["env"]</b> environment</h1></div>
+        <div class="card-body text-@Configuration["bg-color"]">
+            <h5 class="card-title"> card title</h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+    </div>
 </div>
+
