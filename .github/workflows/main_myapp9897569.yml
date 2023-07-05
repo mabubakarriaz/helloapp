@@ -12,7 +12,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    defaults:
+      working-directory: ./hello-web-app/
+      
     steps:
       - uses: actions/checkout@v2
 
